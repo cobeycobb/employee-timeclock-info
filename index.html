@@ -25,10 +25,45 @@
         }
 
         header {
-            background: linear-gradient(135deg, #2c3e50, #3498db);
+            background: linear-gradient(-45deg, #27ae60, #2ecc71, #16a085, #1abc9c);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease-in-out infinite;
             color: white;
             padding: 2rem 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .header-text {
+            text-align: center;
+        }
+
+        .logo {
+            height: 80px;
+            width: auto;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
         }
 
         header h1 {
@@ -63,7 +98,7 @@
             color: #2c3e50;
             margin-bottom: 1rem;
             font-size: 1.8rem;
-            border-left: 4px solid #3498db;
+            border-left: 4px solid #27ae60;
             padding-left: 1rem;
         }
 
@@ -74,8 +109,8 @@
         }
 
         .highlight-box {
-            background: #e8f4fd;
-            border: 2px solid #3498db;
+            background: #e8f6f3;
+            border: 2px solid #27ae60;
             border-radius: 8px;
             padding: 1.5rem;
             margin: 1rem 0;
@@ -90,8 +125,8 @@
         }
 
         .important-box {
-            background: #d1ecf1;
-            border: 2px solid #bee5eb;
+            background: #d5f4e6;
+            border: 2px solid #a3d9a5;
             border-radius: 8px;
             padding: 1.5rem;
             margin: 1rem 0;
@@ -152,7 +187,7 @@
         }
 
         .email-link {
-            color: #3498db;
+            color: #27ae60;
             text-decoration: none;
             font-weight: bold;
         }
@@ -177,7 +212,7 @@
             position: absolute;
             left: 0;
             top: 0;
-            background: #3498db;
+            background: #27ae60;
             color: white;
             width: 2rem;
             height: 2rem;
@@ -210,8 +245,13 @@
 <body>
     <header>
         <div class="container">
-            <h1>Employee Time Clock App</h1>
-            <p>Location-Based Time Tracking for True Roots NM</p>
+            <div class="header-content">
+                <img src="TRUE  ROOTS_2 White.png" alt="True Roots NM Logo" class="logo">
+                <div class="header-text">
+                    <h1>Employee Time Clock App</h1>
+                    <p>Location-Based Time Tracking for True Roots NM</p>
+                </div>
+            </div>
         </div>
     </header>
 
