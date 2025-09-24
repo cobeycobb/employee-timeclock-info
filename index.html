@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Employee Time Clock App | True Roots NM</title>
     <style>
         * {
@@ -16,6 +16,7 @@
             line-height: 1.6;
             color: #333;
             background-color: #f5f5f5;
+            overflow-x: hidden;
         }
 
         .container {
@@ -335,19 +336,49 @@
 
         @media (max-width: 768px) {
             .container {
-                padding: 0 10px;
+                padding: 0 15px;
+                max-width: 100%;
+            }
+
+            header {
+                padding: 1.5rem 0;
             }
 
             header h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+                line-height: 1.2;
+                margin-bottom: 0.5rem;
+            }
+
+            header p {
+                font-size: 1rem;
             }
 
             section {
-                padding: 1.5rem;
+                padding: 1.2rem;
+                margin: 1rem auto;
+                border-radius: 8px;
             }
 
             h2 {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
+                line-height: 1.3;
+                margin-bottom: 1rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+                margin-bottom: 0.8rem;
+            }
+
+            h4 {
+                font-size: 1.1rem;
+                margin-bottom: 0.6rem;
+            }
+
+            p, li {
+                font-size: 0.95rem;
+                line-height: 1.5;
             }
 
             .mobile-nav-toggle {
@@ -357,10 +388,90 @@
             .header-content {
                 flex-direction: column;
                 gap: 1rem;
+                text-align: center;
             }
 
             .logo {
-                height: 60px;
+                height: 50px;
+            }
+
+            /* Better spacing for mobile */
+            .highlight-box, .important-box, .warning-box, .critical-warning-box {
+                padding: 1rem;
+                margin: 0.8rem 0;
+            }
+
+            .steps {
+                margin: 0;
+            }
+
+            .step {
+                padding-left: 2.5rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .step::before {
+                width: 1.8rem;
+                height: 1.8rem;
+                font-size: 0.9rem;
+            }
+
+            /* Better list formatting on mobile */
+            ul, ol {
+                margin-left: 1rem;
+                padding-left: 0.5rem;
+            }
+
+            /* Improve touch targets */
+            .nav-links a {
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            /* Better email links on mobile */
+            .email-link {
+                font-size: 1rem;
+                display: inline-block;
+                margin: 0.2rem 0;
+            }
+
+            /* Responsive text in warning boxes */
+            .critical-warning-box h3 {
+                font-size: 1.3rem;
+            }
+
+            .consequence {
+                font-size: 0.9rem;
+                padding: 0.8rem;
+            }
+        }
+
+        /* Extra small screens (phones in portrait) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 10px;
+            }
+
+            header h1 {
+                font-size: 1.6rem;
+            }
+
+            section {
+                padding: 1rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            .step {
+                padding-left: 2rem;
+            }
+
+            .step::before {
+                width: 1.5rem;
+                height: 1.5rem;
+                font-size: 0.8rem;
             }
         }
     </style>
