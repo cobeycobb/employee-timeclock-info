@@ -223,6 +223,116 @@
             font-weight: bold;
         }
 
+        /* Navigation Styles */
+        .nav-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar-nav {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 280px;
+            background: #2c3e50;
+            color: white;
+            padding: 2rem 0;
+            overflow-y: auto;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .sidebar-nav.open {
+            transform: translateX(0);
+        }
+
+        .nav-header {
+            padding: 0 1.5rem 1rem;
+            border-bottom: 1px solid #34495e;
+            margin-bottom: 1rem;
+        }
+
+        .nav-header h3 {
+            margin: 0;
+            color: #27ae60;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-links li {
+            margin: 0;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 0.8rem 1.5rem;
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-links a:hover {
+            background: #34495e;
+            border-left-color: #27ae60;
+            padding-left: 2rem;
+        }
+
+        .nav-links a.active {
+            background: #34495e;
+            border-left-color: #27ae60;
+            color: #27ae60;
+        }
+
+        .mobile-nav-toggle {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            font-size: 1.2rem;
+        }
+
+        .main-content {
+            flex: 1;
+            margin-left: 0;
+            transition: margin-left 0.3s ease;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Section spacing for fixed nav */
+        section {
+            scroll-margin-top: 2rem;
+        }
+
+        @media (min-width: 769px) {
+            .sidebar-nav {
+                transform: translateX(0);
+                position: fixed;
+            }
+
+            .main-content {
+                margin-left: 280px;
+            }
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 0 10px;
@@ -239,10 +349,48 @@
             h2 {
                 font-size: 1.5rem;
             }
+
+            .mobile-nav-toggle {
+                display: block;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .logo {
+                height: 60px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Mobile Navigation Toggle -->
+    <button class="mobile-nav-toggle" onclick="toggleNav()">
+        ☰
+    </button>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar-nav" id="sidebarNav">
+        <div class="nav-header">
+            <h3>Quick Navigation</h3>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about">About the App</a></li>
+            <li><a href="#installation">📱 Installation</a></li>
+            <li><a href="#gps-policy">🛡️ GPS Policy</a></li>
+            <li><a href="#missed-policy">🚨 Missed Clock Policy</a></li>
+            <li><a href="#requirements">Requirements</a></li>
+            <li><a href="#business-purpose">Business Purpose</a></li>
+            <li><a href="#daily-usage">Daily Usage</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+        </ul>
+    </nav>
+
+    <div class="nav-container">
+        <div class="main-content">
+
     <header>
         <div class="container">
             <div class="header-content">
@@ -256,7 +404,7 @@
     </header>
 
     <main class="container">
-        <section>
+        <section id="about">
             <h2>About the Time Clock App</h2>
             <p>Our company uses a Google AppSheet-based time clock application for all employee and contractor time tracking. This mobile app allows you to clock in and out from your smartphone while ensuring you are at the correct work location.</p>
 
@@ -272,105 +420,8 @@
             </div>
         </section>
 
-        <section>
-            <h2>GPS Location Policy</h2>
-            <div class="important-box">
-                <h3>🛡️ Privacy Notice</h3>
-                <p><strong>The app ONLY records your GPS location when you are actively clocking in or out.</strong> Your location is NOT tracked, recorded, or monitored at any other time while using the app or during work hours.</p>
-
-                <p style="margin-top: 1rem;"><strong>GPS data is used exclusively for:</strong></p>
-                <ul>
-                    <li>Verifying you are at the correct work location during clock actions</li>
-                    <li>Business efficiency tracking and analysis</li>
-                    <li>Accurate time tracking for payroll purposes</li>
-                </ul>
-            </div>
-
-            <div class="warning-box">
-                <h3>⚠️ GPS Functionality Responsibility</h3>
-                <p><strong>If your device's GPS is not functioning properly or you experience location-related issues with the app, it is YOUR responsibility as an employee to immediately contact:</strong></p>
-
-                <p style="text-align: center; margin-top: 1rem; font-size: 1.2rem;">
-                    <strong>Cobey</strong><br>
-                    📧 <a href="mailto:cobey@truerootsnm.com" class="email-link">cobey@truerootsnm.com</a>
-                </p>
-
-                <p style="margin-top: 1rem;"><strong>Do not attempt to work around GPS issues or clock in/out if location services are not working properly. Report the problem immediately.</strong></p>
-            </div>
-        </section>
-
-        <section>
-            <h2>🚨 CRITICAL: Missed Clock-In/Out Policy</h2>
-            <div class="critical-warning-box">
-                <h3>⏰ 24-Hour Email Requirement</h3>
-                <p><strong>If you fail to clock in or clock out for any reason, you MUST email an explanation within 24 hours or you will NOT be paid for that time period.</strong></p>
-
-                <div class="consequence">
-                    ⚠️ NO EMAIL WITHIN 24 HOURS = NO PAY FOR UNRECORDED TIME
-                </div>
-
-                <h4 style="margin-top: 1.5rem; color: #c53030;">Required Information in Your Email:</h4>
-                <ul style="margin-left: 1rem;">
-                    <li><strong>Date and time</strong> of the missed clock action</li>
-                    <li><strong>Location</strong> where you were working</li>
-                    <li><strong>Reason</strong> for the missed clock in/out (GPS issue, app problem, etc.)</li>
-                    <li><strong>Actual work start/end times</strong></li>
-                    <li><strong>Any steps you took</strong> to resolve the issue</li>
-                </ul>
-
-                <p style="text-align: center; margin-top: 1.5rem; font-size: 1.3rem; background: #fed7d7; padding: 1rem; border-radius: 6px;">
-                    <strong>Send explanation emails to:</strong><br>
-                    📧 <a href="mailto:cobey@truerootsnm.com" class="email-link" style="color: #c53030;">cobey@truerootsnm.com</a>
-                </p>
-
-                <p style="margin-top: 1rem;"><strong>It is YOUR responsibility to:</strong></p>
-                <ul style="margin-left: 1rem;">
-                    <li>Verify that your clock actions were successful</li>
-                    <li>Check the app after each clock in/out to confirm it recorded</li>
-                    <li>Report issues immediately when they occur</li>
-                    <li>Send explanation emails within 24 hours if you miss any clock action</li>
-                </ul>
-            </div>
-        </section>
-
-        <section>
-            <h2>Mandatory Usage Requirements</h2>
-            <div class="highlight-box">
-                <h3>📋 All Employees & Contractors Must Use This App</h3>
-                <p><strong>This time clock app is required for ALL employees and contractors, regardless of:</strong></p>
-                <ul>
-                    <li>Pay structure (hourly, salary, commission, etc.)</li>
-                    <li>Employment type (full-time, part-time, contractor)</li>
-                    <li>Department or role within the company</li>
-                    <li>Work location (office, field, remote sites)</li>
-                </ul>
-                <p><strong>No exceptions.</strong> This system is essential for business operations, efficiency tracking, and accurate payroll processing.</p>
-            </div>
-        </section>
-
-        <section>
-            <h2>Business Purpose</h2>
-            <p>The time clock app serves multiple critical business functions:</p>
-
-            <h3>📊 Efficiency & Performance Tracking</h3>
-            <ul>
-                <li>Calculate project efficiency and productivity metrics</li>
-                <li>Analyze time allocation across different work sites</li>
-                <li>Optimize resource deployment and scheduling</li>
-                <li>Track break and lunch patterns for better workflow planning</li>
-            </ul>
-
-            <h3>💰 Payroll & Time Management</h3>
-            <ul>
-                <li>Accurate time tracking for payroll calculations</li>
-                <li>Automated overtime tracking and compliance</li>
-                <li>Detailed records for labor cost analysis</li>
-                <li>Audit trail for employment law compliance</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>App Installation Instructions</h2>
+        <section id="installation">
+            <h2>📱 App Installation Instructions</h2>
             <div class="highlight-box">
                 <h3>📧 Getting Access</h3>
                 <p><strong>Management will share the app directly with your company email address.</strong> You will receive an email invitation from AppSheet with a link to access the app.</p>
@@ -417,8 +468,105 @@
             </div>
         </section>
 
-        <section>
-            <h2>How to Use the App Daily</h2>
+        <section id="gps-policy">
+            <h2>🛡️ GPS Location Policy</h2>
+            <div class="important-box">
+                <h3>🛡️ Privacy Notice</h3>
+                <p><strong>The app ONLY records your GPS location when you are actively clocking in or out.</strong> Your location is NOT tracked, recorded, or monitored at any other time while using the app or during work hours.</p>
+
+                <p style="margin-top: 1rem;"><strong>GPS data is used exclusively for:</strong></p>
+                <ul>
+                    <li>Verifying you are at the correct work location during clock actions</li>
+                    <li>Business efficiency tracking and analysis</li>
+                    <li>Accurate time tracking for payroll purposes</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <h3>⚠️ GPS Functionality Responsibility</h3>
+                <p><strong>If your device's GPS is not functioning properly or you experience location-related issues with the app, it is YOUR responsibility as an employee to immediately contact:</strong></p>
+
+                <p style="text-align: center; margin-top: 1rem; font-size: 1.2rem;">
+                    <strong>Cobey</strong><br>
+                    📧 <a href="mailto:cobey@truerootsnm.com" class="email-link">cobey@truerootsnm.com</a>
+                </p>
+
+                <p style="margin-top: 1rem;"><strong>Do not attempt to work around GPS issues or clock in/out if location services are not working properly. Report the problem immediately.</strong></p>
+            </div>
+        </section>
+
+        <section id="missed-policy">
+            <h2>🚨 CRITICAL: Missed Clock-In/Out Policy</h2>
+            <div class="critical-warning-box">
+                <h3>⏰ 24-Hour Email Requirement</h3>
+                <p><strong>If you fail to clock in or clock out for any reason, you MUST email an explanation within 24 hours or you will NOT be paid for that time period.</strong></p>
+
+                <div class="consequence">
+                    ⚠️ NO EMAIL WITHIN 24 HOURS = NO PAY FOR UNRECORDED TIME
+                </div>
+
+                <h4 style="margin-top: 1.5rem; color: #c53030;">Required Information in Your Email:</h4>
+                <ul style="margin-left: 1rem;">
+                    <li><strong>Date and time</strong> of the missed clock action</li>
+                    <li><strong>Location</strong> where you were working</li>
+                    <li><strong>Reason</strong> for the missed clock in/out (GPS issue, app problem, etc.)</li>
+                    <li><strong>Actual work start/end times</strong></li>
+                    <li><strong>Any steps you took</strong> to resolve the issue</li>
+                </ul>
+
+                <p style="text-align: center; margin-top: 1.5rem; font-size: 1.3rem; background: #fed7d7; padding: 1rem; border-radius: 6px;">
+                    <strong>Send explanation emails to:</strong><br>
+                    📧 <a href="mailto:cobey@truerootsnm.com" class="email-link" style="color: #c53030;">cobey@truerootsnm.com</a>
+                </p>
+
+                <p style="margin-top: 1rem;"><strong>It is YOUR responsibility to:</strong></p>
+                <ul style="margin-left: 1rem;">
+                    <li>Verify that your clock actions were successful</li>
+                    <li>Check the app after each clock in/out to confirm it recorded</li>
+                    <li>Report issues immediately when they occur</li>
+                    <li>Send explanation emails within 24 hours if you miss any clock action</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="requirements">
+            <h2>📋 Mandatory Usage Requirements</h2>
+            <div class="highlight-box">
+                <h3>📋 All Employees & Contractors Must Use This App</h3>
+                <p><strong>This time clock app is required for ALL employees and contractors, regardless of:</strong></p>
+                <ul>
+                    <li>Pay structure (hourly, salary, commission, etc.)</li>
+                    <li>Employment type (full-time, part-time, contractor)</li>
+                    <li>Department or role within the company</li>
+                    <li>Work location (office, field, remote sites)</li>
+                </ul>
+                <p><strong>No exceptions.</strong> This system is essential for business operations, efficiency tracking, and accurate payroll processing.</p>
+            </div>
+        </section>
+
+        <section id="business-purpose">
+            <h2>📊 Business Purpose</h2>
+            <p>The time clock app serves multiple critical business functions:</p>
+
+            <h3>📊 Efficiency & Performance Tracking</h3>
+            <ul>
+                <li>Calculate project efficiency and productivity metrics</li>
+                <li>Analyze time allocation across different work sites</li>
+                <li>Optimize resource deployment and scheduling</li>
+                <li>Track break and lunch patterns for better workflow planning</li>
+            </ul>
+
+            <h3>💰 Payroll & Time Management</h3>
+            <ul>
+                <li>Accurate time tracking for payroll calculations</li>
+                <li>Automated overtime tracking and compliance</li>
+                <li>Detailed records for labor cost analysis</li>
+                <li>Audit trail for employment law compliance</li>
+            </ul>
+        </section>
+
+<section id="daily-usage">
+            <h2>📋 How to Use the App Daily</h2>
             <div class="steps">
                 <div class="step">
                     <h3>Arrive at Work Location</h3>
@@ -447,8 +595,8 @@
             </div>
         </section>
 
-        <section>
-            <h2>Troubleshooting</h2>
+        <section id="troubleshooting">
+            <h2>🔧 Troubleshooting</h2>
             <h3>Common Issues & Solutions</h3>
 
             <h4>🚫 Can't Clock In/Out</h4>
@@ -487,6 +635,61 @@
             </div>
         </section>
     </main>
+        </div>
+    </div>
+
+    <script>
+        function toggleNav() {
+            const nav = document.getElementById('sidebarNav');
+            nav.classList.toggle('open');
+        }
+
+        // Close nav when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const nav = document.getElementById('sidebarNav');
+            const toggle = document.querySelector('.mobile-nav-toggle');
+
+            if (window.innerWidth <= 768 &&
+                !nav.contains(event.target) &&
+                !toggle.contains(event.target) &&
+                nav.classList.contains('open')) {
+                nav.classList.remove('open');
+            }
+        });
+
+        // Highlight active nav item
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const sectionHeight = section.offsetHeight;
+
+                if (sectionTop <= 100 && sectionTop + sectionHeight > 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Close mobile nav when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    document.getElementById('sidebarNav').classList.remove('open');
+                }
+            });
+        });
+    </script>
 
     <footer class="contact-info">
         <div class="container">
