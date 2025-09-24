@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Time Clock App | True Roots NM</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        main {
+            background: white;
+            margin: 2rem auto;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        section {
+            padding: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            border-left: 4px solid #3498db;
+            padding-left: 1rem;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .highlight-box {
+            background: #e8f4fd;
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .important-box {
+            background: #d1ecf1;
+            border: 2px solid #bee5eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .contact-info h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .email-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .email-link:hover {
+            text-decoration: underline;
+        }
+
+        .steps {
+            counter-reset: step-counter;
+        }
+
+        .step {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .step::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #3498db;
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 10px;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Employee Time Clock App</h1>
+            <p>Location-Based Time Tracking for True Roots NM</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>About the Time Clock App</h2>
+            <p>Our company uses a Google AppSheet-based time clock application for all employee and contractor time tracking. This mobile app allows you to clock in and out from your smartphone while ensuring you are at the correct work location.</p>
+
+            <div class="highlight-box">
+                <h3>Key Features</h3>
+                <ul>
+                    <li><strong>6-State Workflow:</strong> Clock In, Break Out, Break In, Lunch Out, Lunch In, Clock Out</li>
+                    <li><strong>GPS Location Verification:</strong> Ensures clock activities happen at designated work sites</li>
+                    <li><strong>Multi-Location Support:</strong> Works across all company office and job site locations</li>
+                    <li><strong>Mobile-First Design:</strong> Optimized for smartphone usage</li>
+                    <li><strong>Real-Time Tracking:</strong> Instant updates to management dashboard</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>GPS Location Policy</h2>
+            <div class="important-box">
+                <h3>🛡️ Privacy Notice</h3>
+                <p><strong>The app ONLY records your GPS location when you are actively clocking in or out.</strong> Your location is NOT tracked, recorded, or monitored at any other time while using the app or during work hours.</p>
+
+                <p style="margin-top: 1rem;"><strong>GPS data is used exclusively for:</strong></p>
+                <ul>
+                    <li>Verifying you are at the correct work location during clock actions</li>
+                    <li>Business efficiency tracking and analysis</li>
+                    <li>Accurate time tracking for payroll purposes</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <h3>⚠️ GPS Functionality Responsibility</h3>
+                <p><strong>If your device's GPS is not functioning properly or you experience location-related issues with the app, it is YOUR responsibility as an employee to immediately contact:</strong></p>
+
+                <p style="text-align: center; margin-top: 1rem; font-size: 1.2rem;">
+                    <strong>Cobey</strong><br>
+                    📧 <a href="mailto:cobey@truerootsnm.com" class="email-link">cobey@truerootsnm.com</a>
+                </p>
+
+                <p style="margin-top: 1rem;"><strong>Do not attempt to work around GPS issues or clock in/out if location services are not working properly. Report the problem immediately.</strong></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Mandatory Usage Requirements</h2>
+            <div class="highlight-box">
+                <h3>📋 All Employees & Contractors Must Use This App</h3>
+                <p><strong>This time clock app is required for ALL employees and contractors, regardless of:</strong></p>
+                <ul>
+                    <li>Pay structure (hourly, salary, commission, etc.)</li>
+                    <li>Employment type (full-time, part-time, contractor)</li>
+                    <li>Department or role within the company</li>
+                    <li>Work location (office, field, remote sites)</li>
+                </ul>
+                <p><strong>No exceptions.</strong> This system is essential for business operations, efficiency tracking, and accurate payroll processing.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Business Purpose</h2>
+            <p>The time clock app serves multiple critical business functions:</p>
+
+            <h3>📊 Efficiency & Performance Tracking</h3>
+            <ul>
+                <li>Calculate project efficiency and productivity metrics</li>
+                <li>Analyze time allocation across different work sites</li>
+                <li>Optimize resource deployment and scheduling</li>
+                <li>Track break and lunch patterns for better workflow planning</li>
+            </ul>
+
+            <h3>💰 Payroll & Time Management</h3>
+            <ul>
+                <li>Accurate time tracking for payroll calculations</li>
+                <li>Automated overtime tracking and compliance</li>
+                <li>Detailed records for labor cost analysis</li>
+                <li>Audit trail for employment law compliance</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>App Installation Instructions</h2>
+            <div class="highlight-box">
+                <h3>📧 Getting Access</h3>
+                <p><strong>Management will share the app directly with your company email address.</strong> You will receive an email invitation from AppSheet with a link to access the app.</p>
+            </div>
+
+            <div class="steps">
+                <div class="step">
+                    <h3>Open the Email Invitation</h3>
+                    <p>Check your company email for an invitation from AppSheet. Click the link in the email to open the Time Clock app in your phone's web browser.</p>
+                </div>
+
+                <div class="step">
+                    <h3>Install as Home Screen App</h3>
+                    <p><strong>For the best experience, install the app on your phone's home screen:</strong></p>
+
+                    <h4 style="margin-top: 1rem; color: #2c3e50;">📱 iPhone (iOS) Instructions:</h4>
+                    <ol style="margin-left: 1rem;">
+                        <li>Open the app link in <strong>Safari</strong> (not Chrome or other browsers)</li>
+                        <li>Tap the <strong>Share button</strong> (square with arrow pointing up) at the bottom of the screen</li>
+                        <li>Scroll down and tap <strong>"Add to Home Screen"</strong></li>
+                        <li>Tap <strong>"Add"</strong> in the top right corner</li>
+                        <li>The app icon will now appear on your home screen</li>
+                    </ol>
+
+                    <h4 style="margin-top: 1rem; color: #2c3e50;">🤖 Android Instructions:</h4>
+                    <ol style="margin-left: 1rem;">
+                        <li>Open the app link in <strong>Chrome</strong> browser</li>
+                        <li>Tap the <strong>menu button</strong> (three dots) in the top right corner</li>
+                        <li>Select <strong>"Add to Home screen"</strong> or <strong>"Install app"</strong></li>
+                        <li>Tap <strong>"Add"</strong> or <strong>"Install"</strong> to confirm</li>
+                        <li>The app icon will now appear on your home screen</li>
+                    </ol>
+                </div>
+
+                <div class="step">
+                    <h3>Log In</h3>
+                    <p>Open the app and log in with your company Google account (the same email where you received the invitation).</p>
+                </div>
+
+                <div class="step">
+                    <h3>Enable Location Services</h3>
+                    <p>When prompted, allow location access for the app. You can also manually enable this in your phone's Settings > Privacy > Location Services.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>How to Use the App Daily</h2>
+            <div class="steps">
+                <div class="step">
+                    <h3>Arrive at Work Location</h3>
+                    <p>Navigate to your assigned office or job site before attempting to clock in.</p>
+                </div>
+
+                <div class="step">
+                    <h3>Clock In</h3>
+                    <p>Open the app and tap "Clock In" when you arrive and are ready to start work.</p>
+                </div>
+
+                <div class="step">
+                    <h3>Manage Breaks & Lunch</h3>
+                    <p>Use "Break Out/In" and "Lunch Out/In" buttons to track all break periods.</p>
+                </div>
+
+                <div class="step">
+                    <h3>Clock Out</h3>
+                    <p>Tap "Clock Out" at the end of your work day while still at the work location.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Troubleshooting</h2>
+            <h3>Common Issues & Solutions</h3>
+
+            <h4>🚫 Can't Clock In/Out</h4>
+            <ul>
+                <li>Verify you're within the designated work area radius</li>
+                <li>Check that GPS/Location Services are enabled for the app</li>
+                <li>Try refreshing your location by closing and reopening the app</li>
+                <li>If issues persist, contact Cobey immediately</li>
+            </ul>
+
+            <h4>📍 GPS Not Working</h4>
+            <ul>
+                <li>Check your device's GPS settings</li>
+                <li>Ensure you have a clear view of the sky (GPS signals)</li>
+                <li>Restart the app and try again</li>
+                <li><strong>Contact Cobey if GPS problems continue</strong></li>
+            </ul>
+
+            <h4>📱 App Not Loading</h4>
+            <ul>
+                <li>Check your internet connection (WiFi or cellular)</li>
+                <li>Verify your Google account access</li>
+                <li>Clear the app cache or restart your phone</li>
+                <li>Contact IT support if app issues continue</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="contact-info">
+        <div class="container">
+            <h3>Questions or Issues?</h3>
+            <p>For GPS problems or app technical issues, contact:</p>
+            <p><strong>Cobey</strong></p>
+            <p>📧 <a href="mailto:cobey@truerootsnm.com" class="email-link">cobey@truerootsnm.com</a></p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                True Roots NM Employee Time Clock System
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
